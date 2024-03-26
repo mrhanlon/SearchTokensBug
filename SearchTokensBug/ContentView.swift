@@ -42,8 +42,9 @@ struct ContentView: View {
     }
     
     @State var currentTokens = [Token]()
-    
-    var suggestedTokens: [Token] {
+    @State var suggestions = Token.allCases
+
+    var computedSuggestions: [Token] {
         if searchText.contains("#") {
             return Token.allCases
         } else {
@@ -65,7 +66,8 @@ struct ContentView: View {
             .searchable(
                 text: $searchText,
                 tokens: $currentTokens,
-                suggestedTokens: .constant(suggestedTokens),
+                suggestedTokens: .constant(computedSuggestions),
+//                suggestedTokens: $suggestions, // with a non-computed property, suggestions will only display with toolbar placement on Sonoma
                 placement: .sidebar, // commenting out this line will cause suggested tokens to work as expected
                 prompt: "Search names"
             ) {
