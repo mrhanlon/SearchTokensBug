@@ -1,0 +1,1 @@
+When the placement of `searchable` is `.sidebar`, suggested tokens do not display as expected. Initially, upon typing "#" the tokens will display. But after typing other text token suggestions stop working.
